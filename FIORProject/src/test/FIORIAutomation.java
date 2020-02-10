@@ -46,7 +46,7 @@ public class FIORIAutomation {
 		try {
 			driver.get(prop.getProperty("LocalURL"));
 			test.log(LogStatus.INFO, "Should Open FIORI PROJECT", "Successfully Opened FIORI PRoject");
-			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='j_username']")));
+			Thread.sleep(6000);
 			WebElement username = driver.findElement(By.xpath("//*[@id='j_username']"));
 			WebElement password = driver.findElement(By.xpath("//*[@id='j_password']"));
 			WebElement loginButton = driver.findElement(By.xpath("//*[@id='logOnFormSubmit']"));
@@ -81,8 +81,7 @@ public class FIORIAutomation {
 		startTest("Validate Graph Data");
 		JavascriptExecutor js =((JavascriptExecutor)driver);
 		js.executeScript("window.scrollBy(0, 200)");
-		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//li//span[@class='sapUiTreeNodeContent' and text()='StackedBar']")));
-		Thread.sleep(5000);
+		Thread.sleep(10000);
 		WebElement stackedBar = driver.findElement(By.xpath("//li//span[@class='sapUiTreeNodeContent' and text()='StackedBar']"));
 		js.executeScript("arguments[0].scrollIntoView(true)", stackedBar);
 		highLighterMethod(driver, stackedBar);
@@ -103,8 +102,8 @@ public class FIORIAutomation {
 				test.log(LogStatus.PASS, "Should Switch to Graph Window", "Successfully Switched to graph window "+driver.getTitle());
 			}
 		}
-		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@class='ui5-viz-controls-viz-frame']")));
-		Thread.sleep(3000);		
+		
+		Thread.sleep(9000);		
 
 		int graphCount = driver.findElements(By.xpath("//*[name()='g' and @class='v-datapoint v-morphable-datapoint v-datapoint-default']")).size();
 		for (int i = 1; i<=graphCount; i++) {
