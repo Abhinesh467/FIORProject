@@ -50,11 +50,11 @@ public class TestClass {
 		Actions actions = new Actions(driver);	
 		actions.doubleClick(driver.findElement(By.name("ND5"))).build().perform();		
 		Thread.sleep(2000);
-		driver.findElement(By.id("100")).sendKeys("AJAY");
+		driver.findElement(By.id("100")).sendKeys("fathima");
 		Robot r = new Robot();
 		r.keyPress(java.awt.event.KeyEvent.VK_DOWN);
 		r.keyRelease(java.awt.event.KeyEvent.VK_DOWN);
-		driver.findElement(By.id("100")).sendKeys("Tomala@2020");
+		driver.findElement(By.id("100")).sendKeys("Ayaan..1");
 		r.keyPress(java.awt.event.KeyEvent.VK_ENTER);
 		r.keyRelease(java.awt.event.KeyEvent.VK_ENTER);
 	}

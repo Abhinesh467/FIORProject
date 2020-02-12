@@ -13,6 +13,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -23,7 +24,7 @@ import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
 
 
-public class FIORIAutomation {
+public class LocalFiori {
 
 	public static WebDriver driver;
 	public static WebDriverWait wait;
@@ -80,13 +81,15 @@ public class FIORIAutomation {
 		startTest("Validate Graph Data");
 		JavascriptExecutor js =((JavascriptExecutor)driver);
 		js.executeScript("window.scrollBy(0, 200)");
-		Thread.sleep(10000);
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//li//span[@class='sapUiTreeNodeContent' and text()='StackedBar']")));
+		Thread.sleep(7000);
 		WebElement stackedBar = driver.findElement(By.xpath("//li//span[@class='sapUiTreeNodeContent' and text()='StackedBar']"));
 		js.executeScript("arguments[0].scrollIntoView(true)", stackedBar);
 		highLighterMethod(driver, stackedBar);
 		stackedBar.click();		
 		test.log(LogStatus.PASS, "Should click on Stacked Bar", "Successfully Clicked on Stacked Bar");
-		Thread.sleep(7000);
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath(parentWinHandle)));
+		Thread.sleep(4000);
 		WebElement run = driver.findElement(By.xpath("//*[@id='__toolbar1-applicationToolbar-preview.run']"));
 		highLighterMethod(driver, run);
 		run.click();
@@ -102,8 +105,7 @@ public class FIORIAutomation {
 			}
 		}
 		
-		Thread.sleep(9000);		
-
+		Thread.sleep(9000);	
 		int graphCount = driver.findElements(By.xpath("//*[name()='g' and @class='v-datapoint v-morphable-datapoint v-datapoint-default']")).size();
 		for (int i = 1; i<=graphCount; i++) {
 			WebElement graph1 = driver.findElement(By.xpath("(//*[name()='g' and @class='v-datapoint v-morphable-datapoint v-datapoint-default'])["+i+"]"));		

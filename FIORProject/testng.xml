@@ -1,9 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Suite">
-  <test name="Test">
+<suite name="Suite" parallel="tests">
+  <test name="TestLocal">
     <classes>
-      <class name="test.TestClass"/>
+      <class name="test.LocalFiori"/>
+      <class name="test.DevFiori"/>
+      <class name="test.QAFiori"/>      
     </classes>
-  </test>
-</suite>
+  </test> 
+   <test name="TestDev">
+    <classes>    
+      <class name="test.DevFiori"/>          
+    </classes>
+  </test> 
+   <test name="TestQA">
+    <classes>      
+      <class name="test.QAFiori"/>      
+    </classes>
+  </test> 
+  
+</suite> 
